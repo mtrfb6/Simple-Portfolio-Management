@@ -108,7 +108,7 @@ void viewStocks(vector<EquityStock> &stocks){
                 cout << "Data not availabe for entered stock." << endl;
             }
             else if(userSelect == stocks[i].getSymbol()){
-                cout << stocks[i].getSymbol() << " Information:" << endl <<
+                cout << "\n" << bold << stocks[i].getSymbol() << " Information:" << endl << reset <<
                 "Sector: " << stocks[i].getSector() << endl <<
                 "Last close: $" << stocks[i].getPrice() << "%" << endl <<
                 "Average return: " << stocks[i].getAvgReturn() << "%" << endl <<
@@ -215,7 +215,7 @@ void getInfo(){
             cout << bold << "\nBeta: " << reset << endl <<
             "Beta is a measure of a stocks volatility relative to the broader market. This is why the S&P 500 has a beta value of 1\n" <<
             "Stocks vary on a scale from less-volatile to most starting at 0. Values below 1 indicate less volatility than the market.\n" <<
-            "Whereas values greater than 1 are more volatile.\nHigh and low beta scores are not inherently good or bad. Stocks with low\n"<<
+            "Whereas values greater than 1 are more volatile. High and low beta scores are not inherently good or bad. Stocks with low\n"<<
             "beta values can still be in a large downtrend" << underline << "\nIdeal values are generally close to 1.\n" << reset << endl;
         }
         else if(toupper(userSelect) == 'E'){
