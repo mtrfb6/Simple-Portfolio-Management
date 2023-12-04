@@ -1,12 +1,13 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include <iomanip>
 #include "EquityStock.h"
 using namespace std;
 
 struct ownedStock {
   EquityStock stock;
-  int quantity;
+  double quantity;
   ownedStock *nextPtr;
 };
 
@@ -16,12 +17,18 @@ private:
   ownedStock *tailPtr;
   double beta;
   double totalMrktValue;
+  double expectedReturn;
 
 public:
   Linked();
   ~Linked(); // destructor
-  void addNode(EquityStock s, int shares);
+  void addNode(EquityStock &s, double shares);
   void delNode(string symbol);
   void printList();
-  void calculatePortfolioBeta(EquityStock& market);
+  void calculatePortfolioBeta();
+  void calculateExpectedReturn();
+  bool isEmpty();
+  bool isOwned(string symbol);
+  void updateNode(string symbol, double shares);
+
 };
