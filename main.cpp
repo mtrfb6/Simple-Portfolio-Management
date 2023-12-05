@@ -56,6 +56,5 @@ int main(){
             cout << "Enter 'V' to view available stocks, 'B' to start building your portfolio, 'P' to view your portfolio, 'Q' to quit." << endl;
         }
     }
-    portfolio.~Linked(); //call destructor on program close
     return 0;
 }
