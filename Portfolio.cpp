@@ -10,36 +10,37 @@ Linked::Linked() {
 }
 
 Linked::~Linked() {
-    //Destructor will loop through the list and delete each node
-    ownedStock* tempPtr = headPtr;
-    ownedStock* delPtr = tempPtr;
-    beta = 0.0;
-    totalMrktValue = 0.0;
-    while (tempPtr != nullptr){
-        tempPtr = tempPtr->nextPtr;
-        delete delPtr;
-        delPtr = tempPtr;
+  // Destructor will loop through the list and delete each node
+  ownedStock *tempPtr = headPtr;
+  while (tempPtr != nullptr) {
+    ownedStock *nextPtr = tempPtr->nextPtr;
+    delete tempPtr;
+    tempPtr = nextPtr;
   }
+  beta = 0.0;
+  totalMrktValue = 0.0;
   headPtr = nullptr;
   tailPtr = nullptr;
-}
+  }
+
 
 void Linked::addNode(EquityStock &S, double shares) {
-  //Create a new node (set data & pointer values)
+  // Create a new node (set data & pointer values)
   if (shares <= 0)
     return;
-  ownedStock* newStock = new ownedStock;
+  ownedStock *newStock = new ownedStock;
   newStock->stock = S;
   newStock->quantity = shares;
+  newStock->nextPtr = nullptr;
   totalMrktValue += newStock->quantity * newStock->stock.getPrice();
-  
-  //if the list is empty, set head & tail pointers to new node
-  if (headPtr == nullptr){
+
+  // if the list is empty, set head & tail pointers to new node
+  if (headPtr == nullptr) {
     headPtr = newStock;
     tailPtr = newStock;
   }
-  //else add node to the end
-  else{
+  // else add node to the end
+  else {
     tailPtr->nextPtr = newStock;
     tailPtr = newStock;
   }
